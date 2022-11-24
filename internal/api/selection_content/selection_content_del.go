@@ -34,7 +34,7 @@ func SelectionContentDel(c *gin.Context) {
 		c.JSON(http.StatusOK, apiResponse.ResponseFail(apiResponse.StatusMsgSuccess, apiResponse.StatusCodeOk))
 		return nil
 	})
-	if err != nil { //创建失败
+	if err != nil { //删除失败
 		c.JSON(http.StatusOK, apiResponse.ResponseFail(apiResponse.StatusMsgParamsError, apiResponse.StatusCodeParamsError))
 	}
 }

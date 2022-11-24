@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-type SelectionForm struct {
+type selectionCreateForm struct {
 	ActivityTitle      string  `json:"activity_title"`      //活动标题
 	ActivityStartTime  int64   `json:"activity_start_time"` //活动开始时间
 	ActivityEndTime    int64   `json:"activity_end_time" `  //活动结束时间
@@ -18,7 +18,7 @@ type SelectionForm struct {
 }
 
 func SelectionCreate(c *gin.Context) {
-	selectionForm := &SelectionForm{}
+	selectionForm := &selectionCreateForm{}
 	c.ShouldBind(selectionForm)
 	//活动标题
 	if selectionForm.ActivityTitle == "" {

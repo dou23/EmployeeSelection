@@ -4,6 +4,7 @@ import (
 	apiResponse "EmployeeSelection/internal/api/response"
 	"EmployeeSelection/internal/database"
 	"EmployeeSelection/internal/database/model"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -25,4 +26,10 @@ func SelectionDel(c *gin.Context) {
 		c.JSON(http.StatusOK, apiResponse.ResponseFail("评选活动不存在", apiResponse.StatusCodeParamsError))
 		return
 	}
+	tx = database.GetDatabase().Delete(selection)
+	if tx.Error == nil {
+		c.JSON(http.StatusOK, apiResponse.ResponseFail(fmt.Sprint("删除失败: ", tx.Error.Error()), apiResponse.StatusCodeParamsError))
+		return
+	}
+	c.JSON(http.StatusOK, apiResponse.ResponseOk("删除成功"))
 }
