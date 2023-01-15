@@ -1,5 +1,5 @@
 # EmployeeSelection
 员工评选系统
-项目运行：
-go generate \n
+项目运行：\
+go generate \
 go run .
